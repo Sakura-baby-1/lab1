@@ -1,29 +1,19 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, initializeAuth, getReactNativePersistence } from 'firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAeJ7NPV0bL1aPWKV8SlvjaumOMIXirkGI",
-  authDomain: "lab2-3630d.firebaseapp.com",
-  databaseURL: "https://lab2-3630d-default-rtdb.firebaseio.com",
-  projectId: "lab2-3630d",
-  storageBucket: "lab2-3630d.appspot.com",
-  messagingSenderId: "788366826412",
-  appId: "1:788366826412:web:7cb0372545419e33447809",
-  measurementId: "G-EYHY4GN5FD"
+  apiKey: "AIzaSyAS_pWtL8yukMIyqVyilYzQpmGSb1RnTBY",
+  authDomain: "lab1-e1556.firebaseapp.com",
+  databaseURL: "https://lab1-e1556-default-rtdb.firebaseio.com",
+  projectId: "lab1-e1556",
+  storageBucket: "lab1-e1556.appspot.com",
+  messagingSenderId: "827068223459",
+  appId: "1:827068223459:web:6b6c65a408fade31fc9ad6",
+  measurementId: "G-0HY8QG2Y7K",
 };
 
 // Khởi tạo Firebase
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-// Kiểm tra xem Auth đã được khởi tạo chưa
-let auth;
-if (!getAuth(app)) {
-  auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(AsyncStorage)
-  });
-} else {
-  auth = getAuth(app);
-}
-
-export { auth };
+export { app, database };
